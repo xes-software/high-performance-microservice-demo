@@ -1,6 +1,8 @@
 syntax = "proto3";
 package todo;
 
+message Empty {}
+
 message AddRequest {
     string item = 1;
 }
@@ -9,7 +11,7 @@ message ListResponse {
     repeated string list = 1;
 }
 
-service Todo {
-    rpc Add(AddRequest) returns (ListResponse);
-    rpc List() returns (ListResponse);
+service TodoList {
+    rpc Add(AddRequest) returns (Empty);
+    rpc List(Empty) returns (ListResponse);
 }
